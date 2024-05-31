@@ -10,18 +10,26 @@ public class Ball : MonoBehaviour
 
     public bool Absorption;
 
+    bool Touch;
+
     Vector3 OldPos;
 
     GameObject NextBall;
 
+    public Vector2 Pos;
+
     // Start is called before the first frame update
     void Start()
     {
+        Touch = false;
+
         BallPower = 1;
 
         Absorption = false;
 
         OldPos = transform.position;
+
+        BallType = Random.Range(0, 4);
 
         switch (BallType)
         {
@@ -44,65 +52,52 @@ public class Ball : MonoBehaviour
         }
     }
 
+   
+
     // Update is called once per frame
     void Update()
     {
         
     }
 
-    public void CheckAbsorption()
+   public void BallAction(GameObject NextBall)
     {
-        transform.parent = null;
+        //Ballà⁄ìÆ
+        transform.position = Vector3.MoveTowards(transform.position, NextBall.transform.position, 0.005f);
 
-        if (Absorption == true)
-        {
-            NextBall.GetComponent<Ball>().BallPowerUp(BallPower);
+        float dis = Vector3.Distance(transform.position, NextBall.transform.position);
 
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            transform.position = OldPos;
-        }
-    }
+        if (dis <= 0.005f) {
 
-    public void BallPowerUp(int power)
-    {
-        if (power == BallPower)
-        {
-            BallPower *= 2;
-        }
-        else
-        {
-            BallPower += power;
-        }
-
-
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ball"))
-        {
-            if (collision.gameObject.GetComponent<Ball>().BallType == BallType)
+            //çUåÇÇ©ãzé˚Ç©
+            if (BallType == NextBall.GetComponent<Ball>().BallType)
             {
-                Absorption = true;
+                //ãzé˚
+                NextBall.GetComponent<Ball>().BallPower += BallPower;
+                Vector3 scl = NextBall.transform.localScale;
+                scl.x *= 1.1f;
+                scl.y *= 1.1f;
 
-                NextBall = collision.gameObject;
+                NextBall.transform.localScale = scl;
+
+
+                //è¡ñ≈
+                Destroy(this.gameObject);
+
+            }
+            else
+            {
+                //çUåÇ
+
+
+                //ballè¡ñ≈
+                Destroy(this.gameObject);
+                Destroy(NextBall);
             }
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ball"))
-        {
-            if (collision.gameObject.GetComponent<Ball>().BallType == BallType)
-            {
-                Absorption = false;
+   
 
-                NextBall = null;
-            }
-        }
-    }
+    
 }
