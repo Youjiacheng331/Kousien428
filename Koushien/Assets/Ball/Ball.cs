@@ -18,6 +18,26 @@ public class Ball : MonoBehaviour
 
     public Vector2 Pos;
 
+    public
+    GameObject Space;
+
+    public void SetSpace(GameObject obj)
+    {
+        Space = obj;
+    }
+
+    public void Select(bool click)
+    {
+        if (click == true) 
+        {
+            Space.GetComponent<SpriteRenderer>().color = Color.magenta;
+        }
+        else
+        {
+            Space.GetComponent<SpriteRenderer>().color = Color.white;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -63,7 +83,7 @@ public class Ball : MonoBehaviour
    public void BallAction(GameObject NextBall)
     {
         //Ballà⁄ìÆ
-        transform.position = Vector3.MoveTowards(transform.position, NextBall.transform.position, 0.005f);
+        transform.position = Vector3.MoveTowards(transform.position, NextBall.transform.position, 0.01f);
 
         float dis = Vector3.Distance(transform.position, NextBall.transform.position);
 
@@ -79,9 +99,10 @@ public class Ball : MonoBehaviour
                 scl.y *= 1.1f;
 
                 NextBall.transform.localScale = scl;
-
+                NextBall.GetComponent<Ball>().Select(false);
 
                 //è¡ñ≈
+                Select(false);
                 Destroy(this.gameObject);
 
             }
@@ -91,6 +112,8 @@ public class Ball : MonoBehaviour
 
 
                 //ballè¡ñ≈
+                NextBall.GetComponent<Ball>().Select(false);
+                Select(false);
                 Destroy(this.gameObject);
                 Destroy(NextBall);
             }
