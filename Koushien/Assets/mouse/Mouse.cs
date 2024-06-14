@@ -40,12 +40,14 @@ public class Mouse : MonoBehaviour
             if (Catch == true && EnterObject != Ball1) 
             {
                 Ball2 = EnterObject;
+                Ball2.GetComponent<Ball>().Select(true);
             }
 
 
             if (Catch == false)
             {
                 Ball1 = EnterObject;
+                Ball1.GetComponent<Ball>().Select(true);
             }
 
 
@@ -75,11 +77,15 @@ public class Mouse : MonoBehaviour
                 Ball1.GetComponent<Ball>().Pos.x == Ball2.GetComponent<Ball>().Pos.x)) 
             {
                 Ball1.GetComponent<Ball>().BallAction(Ball2);
+                
             }
             else
             {
+                Ball1.GetComponent<Ball>().Select(false);
+                Ball2.GetComponent<Ball>().Select(false);
                 Ball1 = Ball2;
                 Ball2 = null;
+                Ball1.GetComponent<Ball>().Select(true);
             }
         }
 

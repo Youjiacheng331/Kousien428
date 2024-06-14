@@ -31,6 +31,8 @@ public class Space : MonoBehaviour
     {
         Ball = Instantiate(BallObject, transform.position, Quaternion.identity);
         Ball.GetComponent<Ball>().Pos = Position;
+
+        Ball.GetComponent<Ball>().SetSpace(this.gameObject);
     }
 
     
