@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
+    public Image timeimage;
     public Damy damy;//ここにエネミーを取る
     public Text timerText;
 
@@ -12,5 +13,6 @@ public class Timer : MonoBehaviour
     void Update()
     {
         timerText.text = damy.attackCountdown.ToString("F2") + "s";
+        timeimage.fillAmount = damy.timeper;
     }
 }

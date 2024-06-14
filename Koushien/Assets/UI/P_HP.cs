@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class P_HP : MonoBehaviour
 {
+    public Image hpimage;
     public Damy damy;
     public Text HPtext;
 
@@ -12,5 +13,6 @@ public class P_HP : MonoBehaviour
     void Update()
     {
         HPtext.text = damy.PlayerHP.ToString();
+        hpimage.fillAmount = damy.P_HPper;
     }
 }

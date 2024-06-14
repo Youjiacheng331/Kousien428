@@ -8,16 +8,23 @@ public class Damy : MonoBehaviour
     public float attackCountdown;
     //攻撃時間の設定する変数
     public float attackTime;
-
+    public float timeper;//時間の割合（UIに使用）
+    //エネミー側
+    public float E_HPper;//HP割合（UIに使います）
+    private int EnemyMaxHP = 100;//
     public int EnemyHP;
+    //プレイヤー側
+    public float P_HPper;
+    private int PlayerMaxHP = 100;
     public int PlayerHP;
+
 
     // Start is called before the first frame update
     void Start()
     {
         attackCountdown = attackTime;
-        EnemyHP = 100;
-        PlayerHP = 100;
+        EnemyHP = EnemyMaxHP;
+        PlayerHP = PlayerMaxHP;
 
     }
 
@@ -37,15 +44,24 @@ public class Damy : MonoBehaviour
             attackCountdown = attackTime;
         }
 
+        UpdateHP();
+
     }
 
     void Attack()
     {
         //攻撃処理が行われるであろう場所
         Debug.Log(gameObject.name + "が攻撃しました");
-        PlayerHP = PlayerHP - 1;
+        PlayerHP = PlayerHP - 5;
+        EnemyHP = EnemyHP - 5;
 
+    }
 
+    private void UpdateHP()
+    {
+        P_HPper = (float)PlayerHP / PlayerMaxHP;
+        E_HPper = (float)EnemyHP / EnemyMaxHP;
+        timeper = attackCountdown /attackTime ;
     }
 
 }
