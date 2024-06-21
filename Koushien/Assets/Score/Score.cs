@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Score : MonoBehaviour
 {
-    public static void ApplyEffect(int ballType1, int ballType2, int totalPower)
+    public void ApplyEffect(int ballType1, int ballType2, int totalPower)
     {
         //
         if ((ballType1 == 0 && ballType2 == 1) || (ballType1 == 1 && ballType2 == 0))
