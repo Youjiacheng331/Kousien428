@@ -421,7 +421,6 @@ GameObject:
   - component: {fileID: 705438665}
   - component: {fileID: 705438664}
   - component: {fileID: 705438663}
-  - component: {fileID: 705438666}
   m_Layer: 5
   m_Name: GameStartBottan
   m_TagString: Untagged
@@ -494,9 +493,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 705438666}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Startgame, Assembly-CSharp
-        m_MethodName: LoadStageSelect
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -544,18 +543,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705438661}
   m_CullTransparentMesh: 1
---- !u!114 &705438666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 705438661}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6df8ac34317c8b9408e419ded519dc58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &733853697
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,7 +555,6 @@ GameObject:
   - component: {fileID: 733853701}
   - component: {fileID: 733853700}
   - component: {fileID: 733853699}
-  - component: {fileID: 733853702}
   m_Layer: 5
   m_Name: Quitgamebottan
   m_TagString: Untagged
@@ -641,9 +627,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 733853702}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Quitgame, Assembly-CSharp
-        m_MethodName: Quit
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -691,18 +677,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 733853697}
   m_CullTransparentMesh: 1
---- !u!114 &733853702
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 733853697}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb423fa49501bd24891804d7db154649, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1673261579
 GameObject:
   m_ObjectHideFlags: 0
@@ -940,6 +914,7 @@ GameObject:
   - component: {fileID: 1970967978}
   - component: {fileID: 1970967977}
   - component: {fileID: 1970967976}
+  - component: {fileID: 1970967980}
   m_Layer: 5
   m_Name: Title screen
   m_TagString: Untagged
@@ -1032,6 +1007,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1970967980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1970967975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6df8ac34317c8b9408e419ded519dc58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  start: {fileID: 705438663}
+  option: {fileID: 247210843}
+  quit: {fileID: 733853699}
 --- !u!1 &2027549744
 GameObject:
   m_ObjectHideFlags: 0
