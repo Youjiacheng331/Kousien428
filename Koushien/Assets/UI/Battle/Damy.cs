@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Damy : MonoBehaviour
 {
+    public FadeManager fadeManager;
+
     //UŒ‚‚Ü‚Å‚Ìc‚èŠÔ
     public float attackCountdown;
     //UŒ‚ŠÔ‚Ìİ’è‚·‚é•Ï”
@@ -49,11 +51,11 @@ public class Damy : MonoBehaviour
         UpdateHP();
         if (PlayerHP <= 0)
         {
-            SceneManager.LoadScene("GameOver");
+            fadeManager.FadeToScene("GameOver",false);
         }
         if (EnemyHP <= 0)
         {
-            SceneManager.LoadScene("StageClear");
+            fadeManager.FadeToScene("StageClear",false);
         }
     }
 

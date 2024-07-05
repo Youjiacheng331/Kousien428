@@ -9,6 +9,10 @@ public class Startgame : MonoBehaviour
     public Button start;
     public Button option;
     public Button quit;
+    public AudioClip startclip;
+    public AudioClip optionclip;
+    public AudioClip quitclip;
+    public FadeManager fadeManager;
 
     private void Start()
     {
@@ -23,15 +27,22 @@ public class Startgame : MonoBehaviour
         switch (buttonname)
         {
             case "st":
+                //SEを鳴らす
+                PlaySE(startclip);
 
-                LoadStageSelect();
+                fadeManager.FadeToScene("stageSelect");
 
                 break;
             case "op":
-
+                //SEを鳴らす
+                PlaySE(optionclip);
                 break;
             case "qu":
-                Quit();
+                //SEを鳴らす
+                PlaySE(quitclip);
+
+                fadeManager.FadeToScene(null,true);
+                
                 break;
 
 
@@ -39,20 +50,9 @@ public class Startgame : MonoBehaviour
 
     }
 
-    public void LoadStageSelect()
+    void PlaySE(AudioClip clip)
     {
-        //ステージセレクトのシーンをロード
-        SceneManager.LoadScene("StageSelect");
+        AudioSource.PlayClipAtPoint(clip, Camera.main.transform.position);
     }
-    public void Quit()
-    {
-        //エディタで実行している場合はエディタを停止
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#endif
 
-        //ゲームをビルドして実行している場合はアプリケーションを終了
-        Application.Quit();
-
-    }
 }

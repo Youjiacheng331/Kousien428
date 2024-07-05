@@ -5,9 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class GoStageselect : MonoBehaviour
 {
+    public FadeManager fadeManager;
+    public AudioClip returnclip;
 
     public void GoSS()
     {
-        SceneManager.LoadScene("StageSelect");
+        PlaySE(returnclip);
+        fadeManager.FadeToScene("StageSelect",false);
+    }
+
+    void PlaySE(AudioClip clip)
+    {
+        AudioSource.PlayClipAtPoint(clip, Camera.main.transform.position);
     }
 }

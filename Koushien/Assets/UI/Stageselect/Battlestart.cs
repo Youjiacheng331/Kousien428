@@ -10,6 +10,9 @@ public class Battlestart : MonoBehaviour
     public Button stage2;
     public Button stage3;
     public Button title;
+    public AudioClip stageclip;
+    public AudioClip titleclip;
+    public FadeManager fadeManager;
 
     private void Start()
     {
@@ -26,33 +29,33 @@ public class Battlestart : MonoBehaviour
         {
             case"s1":
                 //ここにステージ１の敵設定
+                PlaySE(stageclip);
 
-                LoadBattle();
+                fadeManager.FadeToScene("Battle", false);
                 break;
             case "s2":
                 //ここにステージ2の敵設定
+                PlaySE(stageclip);
 
-                LoadBattle();
+                fadeManager.FadeToScene("Battle", false);
                 break;
             case "s3":
                 //ここにステージ3の敵設定
+                PlaySE(stageclip);
 
-                LoadBattle();
+                fadeManager.FadeToScene("Battle", false);
                 break;
             case "ti":
-                LoadTitle();
+                //タイトルに戻る
+                PlaySE(titleclip);
+                fadeManager.FadeToScene("Title", false);
                 break;
         }
     }
 
-    public void LoadBattle()
+    void PlaySE(AudioClip clip)
     {
-        //タイトルのシーンをロード
-        SceneManager.LoadScene("Battle");
+        AudioSource.PlayClipAtPoint(clip, Camera.main.transform.position);
     }
-    public void LoadTitle()
-    {
-        //タイトルのシーンをロード
-        SceneManager.LoadScene("Title");
-    }
+
 }
