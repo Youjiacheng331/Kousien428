@@ -13,9 +13,11 @@ public class Battlestart : MonoBehaviour
 
     private void Start()
     {
+        Cursor.visible = true;
+
         stage1.onClick.AddListener(() => ButtonClicked("s1"));
-        stage2.onClick.AddListener(() => ButtonClicked("s1"));
-        stage3.onClick.AddListener(() => ButtonClicked("s1"));
+        //stage2.onClick.AddListener(() => ButtonClicked("s1"));
+        //stage3.onClick.AddListener(() => ButtonClicked("s1"));
         title.onClick.AddListener(() => ButtonClicked("ti"));
 
     }
@@ -32,12 +34,12 @@ public class Battlestart : MonoBehaviour
             case "s2":
                 //ここにステージ2の敵設定
 
-                LoadBattle();
+               // LoadBattle();
                 break;
             case "s3":
                 //ここにステージ3の敵設定
 
-                LoadBattle();
+               // LoadBattle();
                 break;
             case "ti":
                 LoadTitle();
@@ -48,7 +50,7 @@ public class Battlestart : MonoBehaviour
     public void LoadBattle()
     {
         //タイトルのシーンをロード
-        SceneManager.LoadScene("Battle");
+        SceneManager.LoadScene("you");
     }
     public void LoadTitle()
     {

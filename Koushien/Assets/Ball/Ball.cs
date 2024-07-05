@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Ball : MonoBehaviour
 {
+    [SerializeField]
+    float speed;
+
     public int BallPower;
 
     public int BallType;
@@ -20,6 +25,12 @@ public class Ball : MonoBehaviour
 
     public
     GameObject Space;
+
+    [SerializeField]
+    Sprite[] BallSprite;
+
+    [SerializeField]
+    TextMeshProUGUI Text;
 
     public void SetSpace(GameObject obj)
     {
@@ -49,25 +60,22 @@ public class Ball : MonoBehaviour
 
         OldPos = transform.position;
 
-        BallType = Random.Range(0, 4);
+        BallType = Random.Range(0, 3);
 
         switch (BallType)
         {
             case 0:
                 //ê‘
-                GetComponent<SpriteRenderer>().color = new Color(1.0f, 0.0f, 0.0f, 1.0f);
+                GetComponent<SpriteRenderer>().sprite = BallSprite[0];
                 break;
             case 1:
                 //ê¬
-                GetComponent<SpriteRenderer>().color = new Color(0.0f, 0.0f, 1.0f, 1.0f);
+                GetComponent<SpriteRenderer>().sprite = BallSprite[1];
                 break;
+            
             case 2:
-                //â©
-                GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 0.0f, 1.0f);
-                break;
-            case 3:
                 //óŒ
-                GetComponent<SpriteRenderer>().color = new Color(0.0f, 1.0f, 0.0f, 1.0f);
+                GetComponent<SpriteRenderer>().sprite = BallSprite[2];
                 break;
         }
     }
@@ -77,13 +85,15 @@ public class Ball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Text.transform.position = Camera.main.WorldToScreenPoint(transform.position);
+
+        Text.text = BallPower.ToString();
     }
 
    public void BallAction(GameObject NextBall)
     {
         //Ballà⁄ìÆ
-        transform.position = Vector3.MoveTowards(transform.position, NextBall.transform.position, 0.01f);
+        transform.position = Vector3.MoveTowards(transform.position, NextBall.transform.position, speed);
 
         float dis = Vector3.Distance(transform.position, NextBall.transform.position);
 
@@ -111,11 +121,11 @@ public class Ball : MonoBehaviour
             {
                 //çUåÇ
 
-                int TotalPower;
+                //int TotalPower;
 
-                TotalPower = BallPower + NextBall.GetComponent<Ball>().BallPower;
+                //TotalPower = BallPower + NextBall.GetComponent<Ball>().BallPower;
 
-                GetComponent<Score>().ApplyEffect(BallType, NextBall.GetComponent<Ball>().BallType, TotalPower);
+                GetComponent<Score>().ApplyEffect(BallType, NextBall.GetComponent<Ball>().BallType, BallPower, NextBall.GetComponent<Ball>().BallPower);
 
 
 

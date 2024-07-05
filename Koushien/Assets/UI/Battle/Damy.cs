@@ -21,12 +21,21 @@ public class Damy : MonoBehaviour
     public int PlayerHP;
 
 
+    public bool GuardFlag;
+    public int Guard;
+    float GuardTime;
+
+
     // Start is called before the first frame update
     void Start()
     {
         attackCountdown = attackTime;
         EnemyHP = EnemyMaxHP;
         PlayerHP = PlayerMaxHP;
+
+        GuardFlag = false;
+        Guard = 0;
+        GuardTime = 0;
 
     }
 
@@ -46,6 +55,18 @@ public class Damy : MonoBehaviour
             attackCountdown = attackTime;
         }
 
+        if (GuardFlag == true)
+        {
+            GuardTime += Time.deltaTime;
+
+            if (GuardTime > 30.0f)
+            {
+                GuardFlag = false;
+                GuardTime = 0;
+                Guard = 0;
+            }
+        }
+
         UpdateHP();
         if (PlayerHP <= 0)
         {
@@ -61,7 +82,10 @@ public class Damy : MonoBehaviour
     {
         //UŒ‚ˆ—‚ªs‚í‚ê‚é‚Å‚ ‚ë‚¤êŠ
         Debug.Log(gameObject.name + "‚ªUŒ‚‚µ‚Ü‚µ‚½");
-        PlayerHP = PlayerHP - EnemyAT;
+
+       
+
+        PlayerHP = PlayerHP - EnemyAT + Guard;
         
         //EnemyHP = EnemyHP - 5;
 

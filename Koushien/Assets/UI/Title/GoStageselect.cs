@@ -5,7 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class GoStageselect : MonoBehaviour
 {
-
+    private void Start()
+    {
+        Cursor.visible = true;
+    }
     public void GoSS()
     {
         SceneManager.LoadScene("StageSelect");
