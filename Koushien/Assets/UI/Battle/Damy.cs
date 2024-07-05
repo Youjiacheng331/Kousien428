@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Damy : MonoBehaviour
 {
@@ -9,10 +10,11 @@ public class Damy : MonoBehaviour
     //攻撃時間の設定する変数
     public float attackTime;
     public float timeper;//時間の割合（UIに使用）
-    //エネミー側
+    //エネミー側（エネミーが出来るまでの仮）
     public float E_HPper;//HP割合（UIに使います）
     private int EnemyMaxHP = 100;//
     public int EnemyHP;
+    public int EnemyAT=10;
     //プレイヤー側
     public float P_HPper;
     private int PlayerMaxHP = 100;
@@ -45,15 +47,23 @@ public class Damy : MonoBehaviour
         }
 
         UpdateHP();
-
+        if (PlayerHP <= 0)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
+        if (EnemyHP <= 0)
+        {
+            SceneManager.LoadScene("StageClear");
+        }
     }
 
     void Attack()
     {
         //攻撃処理が行われるであろう場所
         Debug.Log(gameObject.name + "が攻撃しました");
-        PlayerHP = PlayerHP - 5;
-        EnemyHP = EnemyHP - 5;
+        PlayerHP = PlayerHP - EnemyAT;
+        
+        //EnemyHP = EnemyHP - 5;
 
     }
 
