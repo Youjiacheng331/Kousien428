@@ -101,6 +101,7 @@ public class Ball : MonoBehaviour
                 NextBall.transform.localScale = scl;
                 NextBall.GetComponent<Ball>().Select(false);
 
+
                 //è¡ñ≈
                 Select(false);
                 Destroy(this.gameObject);
@@ -109,6 +110,13 @@ public class Ball : MonoBehaviour
             else
             {
                 //çUåÇ
+
+                int TotalPower;
+
+                TotalPower = BallPower + NextBall.GetComponent<Ball>().BallPower;
+
+                GetComponent<Score>().ApplyEffect(BallType, NextBall.GetComponent<Ball>().BallType, TotalPower);
+
 
 
                 //ballè¡ñ≈

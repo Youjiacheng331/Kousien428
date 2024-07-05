@@ -4,22 +4,26 @@ using UnityEngine;
 
 public class Score : MonoBehaviour
 {
-    public static void ApplyEffect(int ballType1, int ballType2, int totalPower)
+    [SerializeField]
+    GameObject Enemy;
+
+
+    public void ApplyEffect(int ballType1, int ballType2, int totalPower)
     {
         //
         if ((ballType1 == 0 && ballType2 == 1) || (ballType1 == 1 && ballType2 == 0))
         {
-            //
+            //赤・青
             IncreaseEnemyDamage(totalPower);
         }
         else if ((ballType1 == 1 && ballType2 == 3) || (ballType1 == 3 && ballType2 == 1))
         {
-            //
+            //青・緑
             ReducePlayerDamage(totalPower);
         }
         else if ((ballType1 == 0 && ballType2 == 3) || (ballType1 == 3 && ballType2 == 0))
         {
-            //
+            //赤・緑
             ResetDamageCounter(totalPower);
         }
         else
@@ -31,6 +35,9 @@ public class Score : MonoBehaviour
 
     private static void IncreaseEnemyDamage(int totalPower)
     {
+
+
+
         //
         Debug.Log($"Increase enemy damage by {totalPower}x for 30 seconds");
         //
