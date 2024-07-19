@@ -13,6 +13,7 @@ public class Startgame : MonoBehaviour
     public AudioClip optionclip;
     public AudioClip quitclip;
     public FadeManager fadeManager;
+    public BGMManager bgmManager;
 
     private void Start()
     {
@@ -29,7 +30,6 @@ public class Startgame : MonoBehaviour
             case "st":
                 //SE‚ð–Â‚ç‚·
                 PlaySE(startclip);
-
                 fadeManager.FadeToScene("stageSelect");
 
                 break;

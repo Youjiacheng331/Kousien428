@@ -778,6 +778,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1205930766}
   - component: {fileID: 1205930765}
+  - component: {fileID: 1205930767}
   m_Layer: 0
   m_Name: BGMobject
   m_TagString: Untagged
@@ -896,6 +897,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1205930767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205930764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b63b27705335a04188fd1ef4a3e53e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgmSource: {fileID: 1205930765}
 --- !u!1 &1673261579
 GameObject:
   m_ObjectHideFlags: 0
@@ -1246,6 +1260,7 @@ MonoBehaviour:
   optionclip: {fileID: 8300000, guid: 0207371cf942db347879ffc3b49cbd56, type: 3}
   quitclip: {fileID: 8300000, guid: 5cdf36f21b7bf9a43ac11c5c9f7dd118, type: 3}
   fadeManager: {fileID: 362568564}
+  bgmManager: {fileID: 1205930767}
 --- !u!1 &2027549744
 GameObject:
   m_ObjectHideFlags: 0
